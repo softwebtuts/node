@@ -7,9 +7,10 @@ const findRemoveSync = require('find-remove');                                  
 const cron = require('node-cron');                                              //      Set Corn Jobs in Node
 var JavaScriptObfuscator = require('javascript-obfuscator');                    //      To Obfuscate Javascript Code
 const fetch = require('node-fetch');                                            //      Fetch JSON Data
+var cors = require('cors');
 
 const app = express();
-
+app.use(cors());
 var port = process.env.PORT || 8080;
 
 function formatBytes(bytes, decimals = 2) {

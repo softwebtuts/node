@@ -43,21 +43,21 @@ cron.schedule('*/1 * * * *', () => {
     var result = findRemoveSync(path.join(__dirname), {prefix: 'core', maxLevel: 1});
     console.log(result);
 });
-    
-app.get('/app', async (req, res) => {
-    //res.sendFile(path.join(__dirname + '/index.html'));
-    res.write('No data in Root Directory !');
-    res.end();
-});
 
 const funArray = {};
-        funArray.error = 'Auth-Token not found please contact Admin Team!';
-        funArray.email = 'softwebtuts@gmail.com';
-        funArray.authToken = 'Main ni Btaon Ga :)';
-        funArray.whatsapp = '+923037465988, +447864615562';
-        funArray.methodAllowed = 'GET, POST, OPTION, DELETE';
+funArray.error = 'Auth-Token not found please contact Admin Team!';
+funArray.email = 'softwebtuts@gmail.com';
+funArray.authToken = 'Main ni Btaon Ga :)';
+funArray.whatsapp = '+923037465988, +447864615562';
+funArray.methodAllowed = 'GET, POST, OPTION, DELETE';
+
+app.get('/', async (req, res) => {
+    //res.sendFile(path.join(__dirname + '/index.html'));
+    res.write(funArray);
+    res.end();
+});
         
-app.get('/app/youtube', async (req, res) => {
+app.get('/youtube', async (req, res) => {
     res.header("Content-Type", 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     
@@ -93,7 +93,7 @@ app.get('/app/youtube', async (req, res) => {
     }
 })
 
-app.get('/app/ytapi', async (req, res) => {
+app.get('/ytapi', async (req, res) => {
     res.header("Content-Type", 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     
@@ -112,7 +112,7 @@ app.get('/app/ytapi', async (req, res) => {
     }
 })
 
-app.get('/app/facebook', async (req, res) => {
+app.get('/facebook', async (req, res) => {
     res.header("Content-Type", 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     

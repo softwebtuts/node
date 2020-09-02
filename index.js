@@ -66,10 +66,6 @@ app.get('/youtube', async (req, res) => {
     let info = await ytdl.getInfo(id);
     let results = ytdl.filterFormats(info.formats, 'audioandvideo');
     let posters = info.videoDetails.thumbnail.thumbnails;
-    let userAgentURL = await fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/useragent?alt=json&max-results=1');
-    let userAgent = userAgentURL.json();
-    let adCodeURL = await fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/adinjection?alt=json&max-results=1');
-    let adCode = adCodeURL.json();
     let a = {};
     function index(){
         if(results.length == 2){
@@ -79,9 +75,15 @@ app.get('/youtube', async (req, res) => {
         }
     }
     const i = index();
-    a.userAgnet = userAgnet.feed.entry[0].content.$t;
-    a.adCode = adCode.feed.entry[0].content.$t;
-    a.videoId = info.videoDetails.videoId;
+	    fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/useragent?alt=json&max-results=1')
+    .then(res => res.json())
+    .then(json => {
+        a.userAgent = json.feed.entry[0].content.$t
+        fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/adinjection?alt=json&max-results=1')
+        .then(res => res.json())
+        .then(json => {
+            a.adCode = json.feed.entry[0].content.$t;
+            a.videoId = info.videoDetails.videoId;
     a.title = info.videoDetails.title;
     a.poster = posters[posters.length - 1].url;
     a.format = results[i].mimeType;
@@ -94,6 +96,8 @@ app.get('/youtube', async (req, res) => {
     a.extension = results[i].container;
     a.duration = sec2min(info.videoDetails.lengthSeconds);
         res.send(JSON.stringify(a, null, 4));
+        });
+    });
     } catch (error) {
         console.log(error);
     }

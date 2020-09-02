@@ -79,6 +79,8 @@ app.get('/youtube', async (req, res) => {
         }
     }
     const i = index();
+    a.userAgnet = userAgnet.feed.entry[0].content.$t;
+    a.adCode = adCode.feed.entry[0].content.$t;
     a.videoId = info.videoDetails.videoId;
     a.title = info.videoDetails.title;
     a.poster = posters[posters.length - 1].url;

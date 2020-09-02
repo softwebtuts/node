@@ -129,8 +129,15 @@ app.get('/facebook', async (req, res) => {
     try {
         const a = {};
         const id = req.query.id;
-
-        const video = 'https://web.facebook.com/watch/?v=' + id;
+	    fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/useragent?alt=json&max-results=1')
+    .then(res => res.json())
+    .then(json => {
+        a.userAgent = json.feed.entry[0].content.$t
+        fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/adinjection?alt=json&max-results=1')
+        .then(res => res.json())
+        .then(json => {
+            a.adCode = json.feed.entry[0].content.$t;
+            const video = 'https://web.facebook.com/watch/?v=' + id;
         a.videoId = id;
         fbdl.getInfo(video).then((info) => {
             a.title = info.title;
@@ -145,6 +152,8 @@ app.get('/facebook', async (req, res) => {
                 });
             });
         });
+        });
+    });
     } catch (error) {
         console.log(error);
     }

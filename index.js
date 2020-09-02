@@ -7,10 +7,10 @@ const findRemoveSync = require('find-remove');                                  
 const cron = require('node-cron');                                              //      Set Corn Jobs in Node
 var JavaScriptObfuscator = require('javascript-obfuscator');                    //      To Obfuscate Javascript Code
 const fetch = require('node-fetch');                                            //      Fetch JSON Data
-var cors = require('cors');
+//var cors = require('cors');
 
 const app = express();
-app.use(cors());
+//app.use(cors());
 var port = process.env.PORT || 8080;
 
 function formatBytes(bytes, decimals = 2) {
@@ -54,14 +54,14 @@ funArray.methodAllowed = 'GET, POST, OPTION, DELETE';
 
 app.get('/', async (req, res) => {
     //res.sendFile(path.join(__dirname + '/index.html'));
-    res.header("Content-Type", 'application/json');
+    res.setHeader("Content-Type", 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.write('Contact Admin: https://softwebtuts.blogspot.com');
     res.end();
 });
         
 app.get('/youtube', async (req, res) => {
-    res.header("Content-Type", 'application/json');
+    res.setHeader("Content-Type", 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     
     try {
@@ -107,7 +107,7 @@ app.get('/youtube', async (req, res) => {
 })
 
 app.get('/ytapi', async (req, res) => {
-    res.header("Content-Type", 'application/json');
+    res.setHeader("Content-Type", 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     
     try {

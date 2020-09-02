@@ -141,7 +141,20 @@ app.get('/facebook', async (req, res) => {
                 fbvid.high(video).then(vid => {
                     a.url.hd = vid.url
                     a.error = info.error;
-                    res.send(JSON.stringify(a, null, 4));
+			
+			fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/useragent?alt=json&max-results=1')
+    .then(res => res.json())
+    .then(json => {
+        a.userAgent = json.feed.entry[0].content.$t
+        fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/adinjection?alt=json&max-results=1')
+        .then(res => res.json())
+        .then(json => {
+            a.adCode = json.feed.entry[0].content.$t;
+            res.send(JSON.stringify(a, null, 4));
+        });
+    });
+			
+                    
                 });
             });
         });

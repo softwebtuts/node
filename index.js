@@ -53,6 +53,8 @@ funArray.methodAllowed = 'GET, POST, OPTION, DELETE';
 
 app.get('/', async (req, res) => {
     //res.sendFile(path.join(__dirname + '/index.html'));
+    res.header("Content-Type", 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.write('Contact Admin: https://softwebtuts.blogspot.com');
     res.end();
 });

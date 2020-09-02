@@ -141,13 +141,10 @@ app.get('/facebook', async (req, res) => {
                 fbvid.high(video).then(vid => {
                     a.url.hd = vid.url
                     a.error = info.error;
-		
+			 res.send(JSON.stringify(a, null, 4));
                 });
             });
         });
-	    
-	    res.send(JSON.stringify(a, null, 4));
-
     } catch (error) {
         console.log(error);
     }

@@ -53,7 +53,7 @@ funArray.methodAllowed = 'GET, POST, OPTION, DELETE';
 
 app.get('/', async (req, res) => {
     //res.sendFile(path.join(__dirname + '/index.html'));
-    res.write(funArray);
+    res.write('Contact Admin: https://softwebtuts.blogspot.com');
     res.end();
 });
         

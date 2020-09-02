@@ -5,12 +5,12 @@ const fbvid = require('fbvideos');                                              
 const path = require('path');                                                   //      To get path of any file
 const findRemoveSync = require('find-remove');                                  //      To delete un-nacessary file created
 const cron = require('node-cron');                                              //      Set Corn Jobs in Node
-var JavaScriptObfuscator = require('javascript-obfuscator');                    //      To Obfuscate Javascript Code
+const JavaScriptObfuscator = require('javascript-obfuscator');                    //      To Obfuscate Javascript Code
 const fetch = require('node-fetch');                                            //      Fetch JSON Data
-//var cors = require('cors');
+const cors = require('cors');
 
 const app = express();
-//app.use(cors());
+app.use(cors());
 var port = process.env.PORT || 8080;
 
 function formatBytes(bytes, decimals = 2) {

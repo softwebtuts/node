@@ -67,9 +67,9 @@ app.get('/youtube', async (req, res) => {
     let results = ytdl.filterFormats(info.formats, 'audioandvideo');
     let posters = info.videoDetails.thumbnail.thumbnails;
     let userAgentURL = await fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/useragent?alt=json&max-results=1');
-    let userAgent = await userAgentURL.json();
+    let userAgent = userAgentURL.json();
     let adCodeURL = await fetch('https://softwebtuts-tools.blogspot.com/feeds/posts/default/-/adinjection?alt=json&max-results=1');
-    let adCode = await adCodeURL.json();
+    let adCode = adCodeURL.json();
     let a = {};
     function index(){
         if(results.length == 2){

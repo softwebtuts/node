@@ -10,6 +10,8 @@ const fetch = require('node-fetch');                                            
 
 const app = express();
 
+var port = process.env.PORT || 8080;
+
 function formatBytes(bytes, decimals = 2) {
         if (bytes === 0) return '0 Bytes';
 
@@ -141,4 +143,6 @@ app.get('/app/facebook', async (req, res) => {
     }
 })
 
-app.listen()
+app.listen(port, function() {
+	console.log('Our app is running on http://localhost:' + port);
+});
